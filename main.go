@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"time"
 )
 
 func iterarSlice(data []int) {
@@ -37,4 +38,24 @@ func main() {
 	dataSlice = append(dataSlice, 6, 7, 8, 9, 10)
 	// Print slice
 	iterarSlice(dataSlice)
+	// Crear Canal
+	channel := make(chan int)
+	// Llamar la rutina
+	go doSomething(channel)
+	<-channel
+	// Punteros
+	numero := 33
+	fmt.Println(numero)
+	numeroPuntero := &numero
+	fmt.Println("Puntero espacio en memoria : ", numeroPuntero)
+
+	fmt.Println("Puntero valor : ", *numeroPuntero)
+
+}
+
+// Go rutines
+func doSomething(channel chan int) {
+	time.Sleep(3 * time.Second)
+	fmt.Println("Listo")
+	channel <- 1
 }
