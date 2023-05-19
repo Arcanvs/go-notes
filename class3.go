@@ -48,7 +48,7 @@ func main() {
 	fmt.Printf("%v\n", empleadoFt)
 
 	empeladoPt := EmpleadoPartTime{}
-
+	// Polimorfismo con interfaces
 	getMessage(empleadoFt)
 	getMessage(empeladoPt)
 }
