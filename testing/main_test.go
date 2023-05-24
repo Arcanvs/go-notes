@@ -57,3 +57,29 @@ func TestMayor(t *testing.T) {
 	go tool cover -html=coverage.out
 	Resumen en el navegador
 */
+
+func TestFib(t *testing.T) {
+	tables := []struct {
+		a int
+		b int
+	}{
+		{1, 1},
+		{8, 21},
+		{50, 12586269025},
+	}
+
+	for _, item := range tables {
+		fib := Fibonacci(item.a)
+		if fib != item.b {
+			t.Errorf("Fibonnaci incorrecto, obtiene %d y se espera %d", fib, item.b)
+		}
+	}
+}
+
+/*
+	Para ver el uso de CPU del codigo que testeamos, usamos
+	go test -cpuprofile=cpu.out
+
+	Para ver el resumen del uso del CPU:
+	go tool pprof cpu.out
+*/
